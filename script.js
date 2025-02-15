@@ -64,7 +64,7 @@ gsap.to("#page2>h1>span", {
 });
 
 function canvas() {
-  const canvas = document.querySelector("canvas");
+  const canvas = document.querySelector("#page3>canvas");
   const context = canvas.getContext("2d");
 
   canvas.width = window.innerWidth;
@@ -166,11 +166,11 @@ function canvas() {
     snap: "frame",
     ease: `none`,
     scrollTrigger: {
-      scrub: 0.15,
+      scrub: 0.5,
       trigger: `#page>canvas`,
       //   set start end according to preference
       start: `top top`,
-      end: `600% top`,
+      end: `250% top`,
       scroller: `#main`,
     },
     onUpdate: render,
@@ -203,13 +203,194 @@ function canvas() {
     );
   }
   ScrollTrigger.create({
-    trigger: "// object you want to pin it.",
+    trigger: "#page>canvas",
     pin: true,
     // markers:true,
     scroller: `#main`,
     //   set start end according to preference
     start: `top top`,
-    end: `600% top`,
+    end: `250% top`,
   });
 }
 canvas();
+
+var clutter = "";
+
+document
+  .querySelector("#page4>h1")
+  .textContent.split("")
+  .forEach(function (dets) {
+    clutter += `<span>${dets}</span>`;
+
+    document.querySelector("#page4>h1").innerHTML = clutter;
+  });
+
+gsap.to("#page4>h1>span", {
+  scrollTrigger: {
+    trigger: "#page4>h1>span",
+    start: "top bottom",
+    end: "bottom top",
+    scroller: "#main",
+    scrub: 0.5,
+  },
+  stagger: 0.2,
+  color: "#fff",
+});
+
+
+function canvas1() {
+  const canvas = document.querySelector("#page5>canvas");
+  const context = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.addEventListener("resize", function () {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    render();
+  });
+
+  function files(index) {
+    var data = `
+    bridges/bridges00004.png
+    bridges/bridges00007.png
+    bridges/bridges00010.png
+    bridges/bridges00013.png
+    bridges/bridges00016.png
+    bridges/bridges00019.png
+    bridges/bridges00022.png
+    bridges/bridges00025.png
+    bridges/bridges00028.png
+    bridges/bridges00031.png
+    bridges/bridges00034.png
+    bridges/bridges00037.png
+    bridges/bridges00040.png
+    bridges/bridges00043.png
+    bridges/bridges00046.png
+    bridges/bridges00049.png
+    bridges/bridges00052.png
+    bridges/bridges00055.png
+    bridges/bridges00058.png
+    bridges/bridges00061.png
+    bridges/bridges00064.png
+    bridges/bridges00067.png
+    bridges/bridges00070.png
+    bridges/bridges00073.png
+    bridges/bridges00076.png
+    bridges/bridges00079.png
+    bridges/bridges00082.png
+    bridges/bridges00085.png
+    bridges/bridges00088.png
+    bridges/bridges00091.png
+    bridges/bridges00094.png
+    bridges/bridges00097.png
+    bridges/bridges00100.png
+    bridges/bridges00103.png
+    bridges/bridges00106.png
+    bridges/bridges00109.png
+    bridges/bridges00112.png
+    bridges/bridges00115.png
+    bridges/bridges00118.png
+    bridges/bridges00121.png
+    bridges/bridges00124.png
+    bridges/bridges00127.png
+    bridges/bridges00130.png
+    bridges/bridges00133.png
+    bridges/bridges00136.png
+    bridges/bridges00139.png
+    bridges/bridges00142.png
+    bridges/bridges00145.png
+    bridges/bridges00148.png
+    bridges/bridges00151.png
+    bridges/bridges00154.png
+    bridges/bridges00157.png
+    bridges/bridges00160.png
+    bridges/bridges00163.png
+    bridges/bridges00166.png
+    bridges/bridges00169.png
+    bridges/bridges00172.png
+    bridges/bridges00175.png
+    bridges/bridges00178.png
+    bridges/bridges00181.png
+    bridges/bridges00184.png
+    bridges/bridges00187.png
+    bridges/bridges00190.png
+    bridges/bridges00193.png
+    bridges/bridges00196.png
+    bridges/bridges00199.png
+    bridges/bridges00202.png
+ `;
+    return data.split("\n")[index];
+  }
+
+  const frameCount = 67;
+
+  const images = [];
+  const imageSeq = {
+    frame: 1,
+  };
+
+  for (let i = 0; i < frameCount; i++) {
+    const img = new Image();
+    img.src = files(i);
+    images.push(img);
+  }
+
+  gsap.to(imageSeq, {
+    frame: frameCount - 1,
+    snap: "frame",
+    ease: `none`,
+    scrollTrigger: {
+      scrub: 0.5,
+      trigger: `#page>canvas`,
+      //   set start end according to preference
+      start: `top top`,
+      end: `250% top`,
+      scroller: `#main`,
+    },
+    onUpdate: render,
+  });
+
+  images[1].onload = render;
+
+  function render() {
+    scaleImage(images[imageSeq.frame], context);
+  }
+
+  function scaleImage(img, ctx) {
+    var canvas = ctx.canvas;
+    var hRatio = canvas.width / img.width;
+    var vRatio = canvas.height / img.height;
+    var ratio = Math.max(hRatio, vRatio);
+    var centerShift_x = (canvas.width - img.width * ratio) / 2;
+    var centerShift_y = (canvas.height - img.height * ratio) / 2;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(
+      img,
+      0,
+      0,
+      img.width,
+      img.height,
+      centerShift_x,
+      centerShift_y,
+      img.width * ratio,
+      img.height * ratio
+    );
+  }
+  ScrollTrigger.create({
+    trigger: "#page>canvas",
+    pin: true,
+    // markers:true,
+    scroller: `#main`,
+    //   set start end according to preference
+    start: `top top`,
+    end: `250% top`,
+  });
+}
+canvas();
+
+
+
+
+//was building page5 canvas
