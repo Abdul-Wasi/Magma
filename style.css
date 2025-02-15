@@ -108,7 +108,7 @@ body {
   position: relative;
   padding: 0vw 8vw;
   color: #fff;
-  background-color: #0a3cce;
+  background-color: #1137ca;
 }
 #page2 > h2 {
   margin-bottom: 3vw;
@@ -125,7 +125,6 @@ body {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-color: red;
 }
 #page3 > canvas {
   max-height: 100vh;
@@ -234,7 +233,7 @@ body {
   width: 100%;
   object-fit: cover;
 }
-.page8-bottom{
+.page8-bottom {
   position: absolute;
   bottom: 5%;
   left: 50%;
@@ -242,16 +241,85 @@ body {
   text-align: center;
   font-family: a;
 }
-.page8-bottom > h1{
+.page8-bottom > h1 {
   font-size: 5vw;
   font-weight: 100;
   color: #fff;
   margin-bottom: 2vw;
 }
-.page8-bottom > button{
+.page8-bottom > button {
   padding: 20px 30px;
   border: none;
   border-radius: 50px;
   background-color: #fff;
   color: #0b48ed;
+}
+#page9 {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1137ca;
+}
+.left9 {
+  height: 100%;
+  width: 40%;
+  position: relative;
+  font-family: a;
+}
+.left9 > h1 {
+  position: absolute;
+  top: 40%;
+  right: 5%;
+  transform: translateY(-50%);
+  font-size: 5vw;
+  font-weight: 100;
+  color: #fff;
+  line-height: 1;
+}
+.right9 {
+  height: 100%;
+  width: 60%;
+  position: relative;
+}
+.right9-center {
+  background-color: #000;
+  height: 50%;
+  width: 85%;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url("https://thisismagma.com/wp-content/uploads/2023/04/magma.wp2.cubdev.com-home-1.jpeg");
+  background-size: cover;
+  left: 5%;
+}
+#page10 {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1137ca;
+}
+.right10 {
+  height: 100%;
+  width: 60%;
+  position: relative;
+  left: 40%;
+}
+.right10-inner {
+  height: 33.3%;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  font-family: a;
+  color: #fff;
+}
+.right10-inner > h1 {
+  font-size: 2vw;
+}
+.right10-inner > p {
+  margin-top: 2vw;
+  font-size: 1.3vw;
+  width: 80%;
 }
